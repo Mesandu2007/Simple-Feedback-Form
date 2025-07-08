@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 600px;
+        
+        }
+        .sect {
+            border-radius: 14px;
+            display: flex;
+            padding-bottom: 30px;
+            padding-top: 30px;
+            align-items: center;
+            margin: 100px 200px 0;
+            justify-content: center;
+            box-shadow: 00px 20px 20px rgba(0, 0, 0, 0.1); 
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .grp {
+            display: flex;
+            width: 100%;
+            gap:20px;
+            
+            align-items: center;
+            justify-content: flex-start;
+        }
+        input {
+            height: 40px;
+            width: 470px;
+        }
+        label {
+            font-size: 18px;
+            width: 200px;
+            
+        }
+        .bt {
+            border: none;
+            border-radius: 10px;
+
+            background-color: blue;
+            color: white;
+            font-size: 15px;
+            height: 40px;
+        }
+        .bt:hover {
+            transform: scale(1.05);
+        }
+        textarea{
+            
+            width:470px;
+        }
+        .sect:hover{
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1><center>Simple Feedback Form</center></h1>
+    <section class="sect">
+        
+        <form action="https://formsubmit.co/mesandugunarwardhana@gmail.com" method="POST">
+            <div class="grp">
+                <label for="input1">Enter Name:</label>
+                <input id="input1" name="name" required>
+            </div>
+            <div class="grp">
+                <label for="input2">Enter Email:</label>
+                <input id="input2" name="email" required>
+            </div>
+            <div class="grp">
+                <label for="input3">Enter Contact Number:</label>
+                <input id="input3" name="contact" required>
+            </div>
+            <div class="grp">
+                <label for="input3">Enter Message:</label>
+                <textarea rows="8"></textarea>
+
+            </div>
+            <button class="bt" id="sub">Submit</button>
+        </form>
+    </section>      
+
+    <script>
+        document.getElementById("sub").onclick = function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("input1").value.trim();
+            const email = document.getElementById("input2").value.trim();
+            const contact = document.getElementById("input3").value.trim();
+
+            if (name === "") {
+                alert("Please enter your name!");
+                return;
+            }
+            if (email === "") {
+                alert("Please enter your email!");
+                return;
+            }
+            if (!email.includes("@")) {
+                alert("Please enter a valid email with '@'!");
+                return;
+            }
+            if (contact === "") {
+                alert("Please enter your contact number!");
+                return;
+            }
+            if (isNaN(contact)) {
+                alert("Please enter a valid numeric contact number!");
+                return;
+            }
+
+            // ✅ Submit form after validation
+            e.target.closest("form").submit();
+        }
+    </script>  
+</body>
+</html>
